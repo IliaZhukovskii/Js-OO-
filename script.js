@@ -49,3 +49,4 @@ let person = new DomElement(str, '300', '300', 'yellow', '50');
 
 //Вызов метода
 person.createElement();
+
