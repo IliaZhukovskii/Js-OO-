@@ -19,11 +19,10 @@ DomElement.prototype.createElement = function () {
     div.style.cssText = 
     `height:` + this.height + `px;
     width:` + this.width + `px;
-    margin: auto;
-    margin-top: 10%;
     background-color:` + this.bg + `;
-    font-size:` + this.fontSize + `px;`;
-    div.innerHTML = this.selector;
+    font-size:` + this.fontSize + `px;
+    position: absolute;`;
+    div.innerHTML = '';
     document.body.append(div);
   } else if (ferstSymbol == "#"){
     let p = document.createElement('p');
@@ -33,8 +32,7 @@ DomElement.prototype.createElement = function () {
     width:` + this.width + `px;
     background-color:` + this.bg + `;
     font-size:` + this.fontSize + `px;
-    margin: auto;
-    margin-top: 10%;`;
+    position: absolute;`;
     p.innerHTML = this.selector;
     document.body.append(p);
   } else{
@@ -45,8 +43,28 @@ DomElement.prototype.createElement = function () {
 let str = prompt("Введите selector", ".example");
 
 //Создание объекта через конструктор
-let person = new DomElement(str, '300', '300', 'yellow', '50');
+let person = new DomElement(str, '100', '100', 'yellow', '20');
 
 //Вызов метода
 person.createElement();
+
+
+
+let sq = document.querySelector('div');
+document.addEventListener('keydown', function(event){
+
+  if (event.code == 'ArrowRight'){
+    sq.style.right = parseFloat(sq.style.right || 0) - 10 + 'px';
+  }
+  if (event.code == 'ArrowLeft'){
+    sq.style.left = parseFloat(sq.style.left || 0) - 10 + 'px';
+  }
+  if (event.code == 'ArrowUp'){
+    sq.style.top = parseFloat(sq.style.top || 0) - 10 + 'px';
+  }
+  if (event.code == 'ArrowDown'){
+    sq.style.bottom = parseFloat(sq.style.bottom || 0) - 10 + 'px';
+  }
+});
+
 
